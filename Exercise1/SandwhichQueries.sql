@@ -1,23 +1,17 @@
-Select * 
-From locatiOns
-Where LName in(
 Select locatiOn
 From sandwiches
 Where Filling in(
-Select Filling
-From tastes
-Where Name = 'Jones'
-)
+  Select Filling
+  From tastes
+  Where Name = 'Jones'
 );
 
-Select l.*
-From locatiOns l
-Inner Join sandwiches s On l.LName = s.LocatiOn
-Inner Join tastes t On s.Filling = t.Filling
-Where t.name = 'Jones';
+Select sandwiches.location
+From sandwiches
+Inner Join tastes On sandwiches.Filling = tastes.Filling
+Where tastes.name = 'Jones';
 
-Select l.*, count(distinct t.Name)
-From locatiOns l
-Inner Join sandwiches s On l.LName = s.LocatiOn
-Inner Join tastes t On s.Filling = t.Filling
-Group By l.LName
+Select sandwiches.location, count(distinct tastes.Name)
+From sandwiches
+Inner Join tastes On sandwiches.Filling = tastes.Filling
+Group By sandwiches.location

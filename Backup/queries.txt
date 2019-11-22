@@ -1,0 +1,6 @@
+mysqldump -u root -p --flush-logs  learnings > learnings.sql
+
+create database restored;
+/*Query OK, 1 row affected (0.32 sec)*/
+
+mysql -u root -p restored < learnings.sql

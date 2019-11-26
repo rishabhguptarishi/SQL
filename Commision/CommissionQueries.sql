@@ -58,7 +58,7 @@ Select Group_Concat(Distinct e.name) EmployeeName, Sum(c.commission_amount) comm
 From Employees e
 Inner Join Commissions c on e.id = c.employee_id
 Group By c.employee_id
-Having Sum(c.commission_amount) > 3000;
+Having commission > 3000;
 /*+----------------+------------+
 | EmployeeName   | commission |
 +----------------+------------+
